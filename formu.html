@@ -1,0 +1,174 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva</title>
+
+    <style>
+        /* Agrega tus estilos CSS aquí */
+
+        body {
+            padding: 20px;
+            background: radial-gradient(circle, red 0%, black 100%);
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background: radial-gradient(circle, red 0%, black 100%);
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #555555;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+        }
+
+        .options {
+            margin-top: 10px;
+        }
+
+        .options label {
+            display: block;
+            margin-top: 5px;
+            color: #555555;
+        }
+
+        .options div {
+            margin-top: 5px;
+            margin-left: 20px;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            width: auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Media queries para adaptar el diseño en pantallas más pequeñas */
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            label,
+            input,
+            select,
+            textarea {
+                font-size: 14px;
+            }
+
+            input[type="submit"] {
+                margin-top: 10px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div class="container">
+            <h1>Reserva tu vuelo</h1>
+            <label for="name">Nombre</label>
+            <input type="text" name="name" id="name" placeholder="Pepito Griyo">
+
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email" placeholder="pepitogriyo@gmail.com">
+
+            <label for="job-role">Género</label>
+            <select name="job-role" id="job-role">
+                <option selected disabled>Escoge</option>
+                <option value="front-end-developer">Mujer</option>
+                <option value="back-end-developer">Hombre</option>
+            </select>
+
+            <div class="options">
+                <label>Destino</label>
+                <div>
+                    <label for="america">
+                        <input type="checkbox" name="countries" value="america" id="america">
+                        La Paz
+                    </label>
+                    <label for="spain">
+                        <input type="checkbox" name="countries" value="spain" id="spain">
+                        Cochabamba
+                    </label>
+                    <label for="india">
+                        <input type="checkbox" name="countries" value="india" id="india">
+                        Santa Cruz
+                    </label>
+                    <label for="pakistan">
+                        <input type="checkbox" name="countries" value="pakistan" id="pakistan">
+                        Pando
+                    </label>
+                </div>
+            </div>
+
+            <div class="options">
+                <label>Vive en el exterior</label>
+                <div>
+                    <label for="male">
+                        <input type="radio" name="gender" id="male" value="male">
+                        Sí
+                    </label>
+                    <label for="female">
+                        <input type="radio" name="gender" id="female" value="female">
+                        No
+                    </label>
+                </div>
+            </div>
+
+            <textarea name="about" id="about" cols="30" rows="3" placeholder="Comentarios"></textarea>
+
+            <input type="submit" value="ENVIAR">
+        </div>
+    </form>
+</body>
+</html>

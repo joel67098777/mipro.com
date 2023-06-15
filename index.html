@@ -1,0 +1,402 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aerolínea</title>
+  <style>
+    /* Estilos adicionales para la barra de navegación */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: black;
+      color: white;
+      padding: 10px;
+      z-index: 9999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      font-size: 24px;
+      margin-right: 10px;
+      color: white;
+      font-family: "Arial", sans-serif;
+    }
+
+    .navbar-nav {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-nav li {
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+
+    .navbar-nav li:last-child {
+      margin-right: 0;
+      margin-left: auto;
+    }
+
+    .navbar-nav li a {
+      color: white;
+      text-decoration: none;
+      font-family: "Arial", sans-serif;
+    }
+
+    .navbar-toggler {
+      appearance: none;
+      border: none;
+      background-color: transparent;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .navbar-toggler span {
+      width: 100%;
+      height: 3px;
+      background-color: white;
+    }
+
+    main {
+      margin-top: 60px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+    }
+
+    /* Estilos para el carousel */
+    #carousel {
+      position: relative;
+    }
+
+    #carousel .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+
+    #carousel .carousel img {
+      width: 100%;
+      height: auto;
+      scroll-snap-align: start;
+    }
+
+    #carousel .carousel-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    #carousel h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      font-family: serif;
+    }
+
+    #carousel p {
+      font-size: 50px;
+      font-family: monospace;
+    }
+
+    /* Estilos para los recuadros de personas */
+    #plantel {
+      display: flex;
+      justify-content: center;
+      background-color: red;
+    }
+
+    .recuadro {
+      margin: 10px;
+      flex: 1;
+      border: 1px solid red;
+    }
+
+    .persona {
+      background-color: black;
+      color: white;
+      padding: 10px;
+    }
+
+    .persona img {
+      width: 100%;
+      height: auto;
+    }
+
+    .persona h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      font-family: serif;
+    }
+
+    .persona p {
+      font-size: 14px;
+    }
+
+    /* Estilos para el menú de hamburguesa */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar-brand {
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 18px;
+        text-decoration: none;
+    }
+
+    .navbar-nav {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    .navbar-nav li {
+        margin-right: 10px;
+    }
+
+    .navbar-nav li a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .navbar-toggler {
+        display: none;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .navbar-toggler span {
+        display: block;
+        width: 30px;
+        height: 3px;
+        background-color: #ffffff;
+        margin-bottom: 5px;
+    }
+
+    @media (max-width: 600px) {
+        /* Mostrar el botón del menú de hamburguesa en pantallas pequeñas */
+        .navbar-toggler {
+            display: block;
+        }
+
+        /* Ocultar la lista de navegación en pantallas pequeñas */
+        .navbar-nav {
+            display: none;
+        }
+
+        /* Mostrar la lista de navegación cuando se hace clic en el botón del menú de hamburguesa */
+        .navbar-toggler:checked + .navbar-nav {
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+        }
+
+        /* Estilos para los elementos del menú de hamburguesa */
+        .navbar-nav li {
+            margin-bottom: 10px;
+        }
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a class="navbar-brand" href="">Emirates Airlines</a>
+            <input type="checkbox" id="navbar-toggler" class="navbar-toggler">
+            <label for="navbar-toggler">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <ul class="navbar-nav">
+                <li><a href="login.html">Login</a></li>
+                <li><a href="MenuPrincipal.html">Registros</a></li>
+                <li><a href="https://www.google.com/maps/dir/Universidad+Privada+del+Valle,+Av.+Argentina+2083,+La+Paz/La+Paz/@-16.4953662,-68.1254109,17z/data=!4m14!4m13!1m5!1m1!1s0x915f206782937445:0xacceb97486edb698!2m2!1d-68.1199745!2d-16.5034609!1m5!1m1!1s0x915edf0a04f5a40f:0x57dbfc76b4458ab3!2m2!1d-68.1192936!2d-16.489689!3e0?entry=ttu">Ubicación</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+  <header>
+  </header>
+
+  <main>
+    <section id="carousel">
+      <div class="carousel-overlay">
+        <h3>VOLAR CON EMIRATES</h3>
+        <p>Haga que su viaje sea inolvidable</p>
+        <h3>Conozca la experiencia Emirates y organice un viaje inolvidable más allá de su vuelo.</h3>
+      </div>
+      <div class="carousel">
+        <img src="img/av1.jpg" alt="Imagen 1">
+        <img src="img/av2.jpg" alt="Imagen 2">
+        <img src="img/av3.jpg" alt="Imagen 3">
+      </div>
+    </section>
+
+   <section id="purchase" class="bg-purchase">
+    <div class="purchase center">
+        <div class="reserva-container">
+            <h2 style="text-align: center;">RESERVA TU VUELO DE FORMA RÁPIDA Y SEGURA</h2>
+            <img src="img/av4.jpg" alt="Imagen de reserva" style="width: 100%;">
+        </div>
+        <div style="text-align: center;">
+            <button class="btn btn-purchase" style="background-color: red; color: black; font-size: 24px; padding: 20px 0; width: 100%;"><a href="formu.html">Reservar</a></button>
+        </div>
+    </div>
+</section>
+
+    
+<div class="container">
+  <div class="column">
+    <div class="section-left">
+      <section>
+        <h2 style="text-align: center;">Nuestros Destinos</h2>
+        <ul>
+          <li>
+            <a href="#">
+              <h2>COCHABAMBA</h2>
+              <img src="img/cocha.jpg" alt="COCHABAMBA" style="width: 100%; height: auto;">
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <h2>TARIJA</h2>
+              <img src="img/tari.jpg" alt="TARIJA" style="width: 100%; height: auto;">
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <div class="section-left">
+      <section>
+        <h2 style="text-align: center;">Otros Destinos</h2>
+        <ul>
+          <li>
+            <a href="#">
+              <h2>LA PAZ</h2>
+              <img src="img/lapaz.jpg" alt="LA PAZ" style="width: 100%; height: auto;">
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <h2>SANTA CRUZ</h2>
+              <img src="img/santa.jpg" alt="SANTA CRUZ" style="width: 100%; height: auto;">
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>
+
+   <section id="plantel">
+  <div class="recuadro" style="max-width: 200px;">
+    <a href="url_destino_1">
+      <div class="persona">
+        <img src="img/b.jpg" alt="Imagen 1">
+        <div style="text-align: center;">
+          <h3 style="margin-bottom: 5px;">Oliver Uturuncu</h3>
+          
+         
+<p style="margin-bottom: 0;">Cargo </p>
+        </div>
+        
+       
+<hr style="border-top: 1px solid red; margin-top: 10px;">
+        
+       
+<img src="img/q.jpg" alt="Imagen inferior 1">
+      
+     
+</div>
+    </a>
+  </div>
+
+  
+
+<div class="recuadro" style="max-width: 200px;">
+    
+   
+<a href="url_destino_2">
+      <div class="persona">
+        
+       
+<img src="img/b.jpg" alt="Imagen 2">
+        
+       
+<div style="text-align: center;">
+          
+         
+<h3 style="margin-bottom: 5px;">Joel Zarate</h3>
+          <p style="margin-bottom: 0;">Cargo </p>
+        </div>
+<hr style="border-top: 1px solid red; margin-top: 10px;">
+        <img src="img/q.jpg" alt="Imagen inferior 2">
+      
+      </div>
+</div>
+    </a>
+  </div>
+
+  <div class="recuadro" style="max-width: 200px;">
+    <a href="url_destino_3">
+      <div class="persona">
+        <img src="img/b.jpg" alt="Imagen 3">
+        <div style="text-align: center;">
+          <h3 style="margin-bottom: 5px;">Daynor Mamani</h3>
+          <p style="margin-bottom: 0;">Cargo </p>
+        </div>
+        <hr style="border-top: 1px solid red; margin-top: 10px;">
+        <img src="img/q.jpg" alt="Imagen inferior 3">
+      </div>
+    </a>
+  </div>
+</section>
+  </main>
+
+  <footer>
+    <p>Derechos de autor &copy; 2023 Aerolínea XYZ. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
